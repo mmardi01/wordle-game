@@ -1,0 +1,21 @@
+export const words = [
+  'apple', 'happy', 'table', 'smart', 'grape',
+  'music', 'dream', 'teach', 'sunny', 'piano',
+  'cloud', 'beach', 'horse', 'pizza', 'ocean',
+  'brush', 'earth', 'zebra', 'juice', 'tiger',
+  'candy', 'melon', 'sugar', 'honey', 'robot',
+  'happy', 'mouse', 'house', 'light', 'kitty',
+  'daisy', 'laugh', 'magic', 'smile', 'sweep',
+  'unity', 'night', 'grace', 'peace', 'queen',
+  'spark', 'crown', 'dream', 'faith', 'wings',
+  'water', 'blend', 'brave', 'charm', 'shine',
+  'swirl', 'swift', 'charm', 'peace', 'grind',
+  'flame', 'grind', 'shine', 'zebra', 'peach',
+  'cloud', 'space', 'spark', 'heart', 'frost',
+  'blend', 'grace', 'shine', 'river', 'grain',
+  'dream', 'beach', 'music', 'grace', 'smile',
+  'sugar', 'sweep', 'blend', 'magic', 'happy',
+  'swift', 'zebra', 'charm', 'brush', 'peace',
+  'heart', 'cloud', 'grace', 'shine', 'sunny',
+  'water', 'dream', 'unity', 'grape', 'crown'
+]
