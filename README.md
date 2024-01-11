@@ -1,4 +1,3 @@
-OUMLIL — Today at 6:46 PM
 # Lendstack Wordle
 
 Wordle is a web-based word game created and developed by Welsh software engineer Josh Wardle. Players have six attempts to guess a five-letter word, with feedback given for each guess in the form of colored tiles indicating when letters match or occupy the correct position.
