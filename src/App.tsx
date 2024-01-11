@@ -42,7 +42,6 @@ function App() {
         setDisplayLose(true);
     }, 700);
   };
-  console.log(game.answer);
   let guessesLeft = Array(
     game.gussesLeft - 1 >= 0 ? game.gussesLeft - 1 : 0
   ).fill(0);
