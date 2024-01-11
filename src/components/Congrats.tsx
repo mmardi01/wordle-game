@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
-import image from '../assets/award.png'
+import image from "../assets/award.png";
 import { useAppSelector } from "../hooks/hooks";
 export default function Congrats() {
-
-  const game = useAppSelector(state => state.game);
+  const game = useAppSelector((state) => state.game);
 
   return (
     <div className="absolute flex justify-center items-center inset-0 bg-[#000000af]">
@@ -18,15 +17,25 @@ export default function Congrats() {
         }}
         className="w-[300px] h-[500px] flex-col items-center justify-center flex relative gap-5 bg-[#181c27] shadow-xl rounded-xl"
       >
-        
-        <h1 className="text-3xl font-extrabold text-white ">Congratulations !!!</h1>
-        <p className="text-[#6AAA64] font-extrabold text-3xl">{game.answer.toLocaleUpperCase()}</p>
-        <p className="text-white">You found the solution in {6 - game.gussesLeft} guesses</p>
+        <h1 className="text-3xl font-extrabold text-white ">
+          Congratulations !!!
+        </h1>
+        <p className="text-[#6AAA64] font-extrabold text-3xl">
+          {game.answer.toLocaleUpperCase()}
+        </p>
+        <p className="text-white">
+          You found the solution in {6 - game.gussesLeft} guesses
+        </p>
         <img src={image} className="w-[150px] h-auto" alt="" />
         <h1 className="text-3xl font-extrabold text-white ">You Win!</h1>
-        <button onClick={() => {
-          location.reload();
-        }} className="bg-[#6AAA64] text-white font-bold text-2xl w-[200px] h-[50px] rounded-md">Play Again</button>
+        <button
+          onClick={() => {
+            location.reload();
+          }}
+          className="bg-[#6AAA64] text-white font-bold text-2xl w-[200px] h-[50px] rounded-md"
+        >
+          Play Again
+        </button>
       </motion.div>
     </div>
   );

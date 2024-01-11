@@ -16,21 +16,31 @@ function App() {
   const [isValid, setIsValid] = useState(true);
   const [displayWIn, setDisplayWin] = useState(false);
   const [displayLose, setDisplayLose] = useState(false);
+  const [ableTosubmit, setAbleTosubmit] = useState(true);
+  const [error, setError] = useState('')
+  const [displayeError, setDisplayError] = useState(false)
 
   const game = useAppSelector((state) => state.game);
 
   const sumbitGuess = () => {
+    // check the correct letters
     const result = checkGuess(currentGuess.toLowerCase(), game.answer);
     dispatch(addGuess({ guess: currentGuess, result: result }));
     setCurrnetGuess("");
+    setAbleTosubmit(false);
+
     setTimeout(() => {
-      if (game.answer === currentGuess)
-        setDisplayWin(true);
-    },700)
+      setAbleTosubmit(true);
+    }, 800);
+
+    setTimeout(() => {
+      if (game.answer === currentGuess) setDisplayWin(true);
+    }, 700);
+
     setTimeout(() => {
       if (game.gussesLeft === 1 && game.answer !== currentGuess)
         setDisplayLose(true);
-    },700)
+    }, 700);
   };
 
   let guessesLeft = Array(
@@ -39,15 +49,27 @@ function App() {
 
   const handleKeyDown = ({ key }: KeyboardEvent) => {
     setIsValid(true);
-    if (/^[A-Za-z]$/.test(key) && currentGuess.length < 5) {
+    if (/^[A-Za-z]$/.test(key) && currentGuess.length < 5 && ableTosubmit) {
       setCurrnetGuess((prev) => prev + key);
     }
     if (key === "Backspace") setCurrnetGuess((prev) => prev.slice(0, -1));
-    if (key === "Enter") {
+    if (key === "Enter" && ableTosubmit) {
       if (currentGuess.length !== 5) {
+        setError('Too short');
+        setDisplayError(true);
+        setTimeout(() => {
+          setDisplayError(false);
+        }, 1000);
         setIsValid(false);
+        return;
       }
       if (!dictionary.includes(currentGuess.toLowerCase())) {
+        setError('');
+        setError('Word not found');
+        setDisplayError(true);
+        setTimeout(() => {
+          setDisplayError(false);
+        }, 1000);
         setIsValid(false);
         return;
       }
@@ -66,6 +88,7 @@ function App() {
           <h1 className="font-bold text-4xl text-white">Wordle Game</h1>
         </div>
         <div className="flex flex-col gap-2">
+          {/*  previous guesses area */}
           {game.history.map((guess, index) => (
             <Guess
               key={index}
@@ -75,6 +98,7 @@ function App() {
               result={game.results[index]}
             />
           ))}
+          {/* new guess input */}
           {game.gussesLeft > 0 ? (
             <Guess
               word={currentGuess}
@@ -83,6 +107,8 @@ function App() {
               result={[]}
             />
           ) : null}
+
+          {/* remaining attempts. */}
           {guessesLeft.map((_, index) => (
             <Guess
               key={index}
@@ -93,6 +119,7 @@ function App() {
             />
           ))}
         </div>
+        {/* KeyBoard area */}
         <KeyBoard
           currentGuess={currentGuess}
           setIsValid={setIsValid}
@@ -100,19 +127,10 @@ function App() {
           setDisplayWin={setDisplayWin}
           setDisplayLose={setDisplayLose}
         />
+      {displayeError ? <p className="bg-red-500 shadow-sm top-24 text-white absolute p-2 rounded-lg">{error}</p> : null}
       </div>
-      {
-        displayWIn ?
-        <Congrats /> 
-        : 
-        null
-      }
-      {
-        displayLose ?
-        <Lose />
-        : 
-        null
-      }
+      {displayWIn ? <Congrats /> : null}
+      {displayLose ? <Lose /> : null}
     </div>
   );
 }

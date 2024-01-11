@@ -18,7 +18,7 @@ export default function KeyBoard({
   currentGuess,
   setIsValid,
   setDisplayLose,
-  setDisplayWin
+  setDisplayWin,
 }: KeyBoardProps) {
   const dispatch = useAppDispatch();
   const game = useAppSelector((state) => state.game);
@@ -29,23 +29,29 @@ export default function KeyBoard({
     dispatch(addGuess({ guess: currentGuess, result: result }));
     setCurrnetGuess("");
     setTimeout(() => {
-      if (game.answer === currentGuess)
-        setDisplayWin(true);
-    },700)
+      if (game.answer === currentGuess) setDisplayWin(true);
+    }, 700);
     setTimeout(() => {
       if (game.gussesLeft === 1 && game.answer !== currentGuess)
         setDisplayLose(true);
-    },700)
+    }, 700);
   };
 
   const checkKey = (key: string) => {
-    let result : string= "";
-    usedLetters.forEach(l => {
+    let result: string = "";
+    usedLetters.forEach((l) => {
       if (l.letter === key)
-        result = l.result === 'C' ? "bg-[#6AAA64]" : l.result === 'I' ? "bg-[#939B9F]" : l.result === 'A' ? "bg-[#CEB02C]" : ""
-    })
+        result =
+          l.result === "C"
+            ? "bg-[#6AAA64]"
+            : l.result === "I"
+            ? "bg-[#939B9F]"
+            : l.result === "A"
+            ? "bg-[#CEB02C]"
+            : "";
+    });
     return result;
-  }
+  };
 
   const handleKeyBoardClick = (key: string) => {
     setIsValid(true);
@@ -72,7 +78,9 @@ export default function KeyBoard({
           <div
             key={index}
             onClick={() => handleKeyBoardClick(letter)}
-            className={`bg-[#565F7E] cursor-pointer w-[38px] ${checkKey(letter)}  active:scale-105 h-[43px] text-white text-md font-semibold capitalize flex justify-center items-center rounded-[4px]`}
+            className={`bg-[#565F7E] cursor-pointer w-[38px] ${checkKey(
+              letter
+            )}  active:scale-105 h-[43px] text-white text-md font-semibold capitalize flex justify-center items-center rounded-[4px]`}
           >
             {letter}
           </div>
@@ -82,7 +90,9 @@ export default function KeyBoard({
         {querty[1].split("").map((letter, index) => (
           <div
             onClick={() => handleKeyBoardClick(letter)}
-            className={`bg-[#565F7E] $ active:scale-105 ${checkKey(letter)}  cursor-pointer w-[38px] h-[43px] text-white text-md font-semibold capitalize flex justify-center items-center rounded-[4px]`}
+            className={`bg-[#565F7E] $ active:scale-105 ${checkKey(
+              letter
+            )}  cursor-pointer w-[38px] h-[43px] text-white text-md font-semibold capitalize flex justify-center items-center rounded-[4px]`}
             key={index}
           >
             {letter}
@@ -99,7 +109,9 @@ export default function KeyBoard({
         {querty[2].split("").map((letter, index) => (
           <div
             onClick={() => handleKeyBoardClick(letter)}
-            className={`bg-[#565F7E] cursor-pointer w-[38px] ${checkKey(letter)}  active:scale-105 h-[43px] text-white text-md font-semibold capitalize flex justify-center items-center rounded-[4px]`}
+            className={`bg-[#565F7E] cursor-pointer w-[38px] ${checkKey(
+              letter
+            )}  active:scale-105 h-[43px] text-white text-md font-semibold capitalize flex justify-center items-center rounded-[4px]`}
             key={index}
           >
             {letter}
