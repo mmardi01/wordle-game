@@ -11,7 +11,6 @@ import Lose from "./components/Lose";
 
 function App() {
   const dispatch = useAppDispatch();
-
   const [currentGuess, setCurrnetGuess] = useState("");
   const [isValid, setIsValid] = useState(true);
   const [displayWIn, setDisplayWin] = useState(false);
@@ -19,7 +18,6 @@ function App() {
   const [ableTosubmit, setAbleTosubmit] = useState(true);
   const [error, setError] = useState("");
   const [displayeError, setDisplayError] = useState(false);
-
   const game = useAppSelector((state) => state.game);
 
   const sumbitGuess = () => {
@@ -80,7 +78,6 @@ function App() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
-
   return (
     <div className="w-screen h-screen flex justify-center bg-[#262B3C] items-center">
       <div className=" flex flex-col items-center gap-10">

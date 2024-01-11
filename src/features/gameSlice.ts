@@ -41,7 +41,11 @@ export const gameSlice = createSlice({
       state.history.push(action.payload.guess);
       state.usedLetters = [
         ...state.usedLetters,
-        ...addUsedLetters(action.payload.guess.toLowerCase(), action.payload.result,state.usedLetters),
+        ...addUsedLetters(
+          action.payload.guess.toLowerCase(),
+          action.payload.result,
+          state.usedLetters
+        ),
       ];
     },
   },
