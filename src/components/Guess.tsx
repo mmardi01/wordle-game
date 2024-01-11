@@ -1,20 +1,24 @@
-import React from "react";
-
 type Guess = {
   word: string;
+  result: string[];
+  active: boolean;
+  valid?: boolean;
 };
 
-const correct = 'bg-[#6AAA64]'
-const almost = 'bg-[#CEB02C]'
-const normal = 'bg-[#939b9f29]'
-
-export default function Guess({ word }: Guess) {
+export default function Guess({ word, result, active, valid }: Guess) {
+  word = word.padEnd(5);
   return (
-    <div className="flex gap-2">
+    <div className=" guess flex gap-2">
       {word.split("").map((letter, index) => (
         <div
           key={index}
-          className={`w-[60px] h-[59px] text-2xl  ${normal} flex justify-center items-center rounded-md capitalize font-futura font-extrabold text-white`}
+          className={`w-[60px] ${
+            letter !== " " ? "filled" : ""
+          }  h-[59px] ${!valid ? "text-red-400 border-red-400" : "text-white"}  ${
+            active ? "border-2 border-[#abafb129]" : ""
+          } text-2xl ${
+            result[index]
+          } bg-[#939b9f29] flex justify-center items-center rounded-md capitalize font-futura font-extrabold `}
         >
           {letter}
         </div>
