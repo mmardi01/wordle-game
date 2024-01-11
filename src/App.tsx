@@ -17,8 +17,8 @@ function App() {
   const [displayWIn, setDisplayWin] = useState(false);
   const [displayLose, setDisplayLose] = useState(false);
   const [ableTosubmit, setAbleTosubmit] = useState(true);
-  const [error, setError] = useState('')
-  const [displayeError, setDisplayError] = useState(false)
+  const [error, setError] = useState("");
+  const [displayeError, setDisplayError] = useState(false);
 
   const game = useAppSelector((state) => state.game);
 
@@ -55,7 +55,7 @@ function App() {
     if (key === "Backspace") setCurrnetGuess((prev) => prev.slice(0, -1));
     if (key === "Enter" && ableTosubmit) {
       if (currentGuess.length !== 5) {
-        setError('Too short');
+        setError("Too short");
         setDisplayError(true);
         setTimeout(() => {
           setDisplayError(false);
@@ -64,8 +64,8 @@ function App() {
         return;
       }
       if (!dictionary.includes(currentGuess.toLowerCase())) {
-        setError('');
-        setError('Word not found');
+        setError("");
+        setError("Word not found");
         setDisplayError(true);
         setTimeout(() => {
           setDisplayError(false);
@@ -81,11 +81,12 @@ function App() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
+
   return (
     <div className="w-screen h-screen flex justify-center bg-[#262B3C] items-center">
       <div className=" flex flex-col items-center gap-10">
         <div className="bg-[#dadce008] w-[420px] h-[55px] rounded-xl flex items-center justify-center">
-          <h1 className="font-bold text-4xl text-white">Wordle Game</h1>
+          <h1 className="font-bold text-4xl text-white">Lendstack Wordle</h1>
         </div>
         <div className="flex flex-col gap-2">
           {/*  previous guesses area */}
@@ -127,7 +128,11 @@ function App() {
           setDisplayWin={setDisplayWin}
           setDisplayLose={setDisplayLose}
         />
-      {displayeError ? <p className="bg-red-500 shadow-sm top-24 text-white absolute p-2 rounded-lg">{error}</p> : null}
+        {displayeError ? (
+          <p className="bg-red-500 shadow-sm top-24 text-white absolute p-2 rounded-lg">
+            {error}
+          </p>
+        ) : null}
       </div>
       {displayWIn ? <Congrats /> : null}
       {displayLose ? <Lose /> : null}

@@ -1,4 +1,4 @@
-```md
+OUMLIL — Today at 6:46 PM
 # Lendstack Wordle
 
 Wordle is a web-based word game created and developed by Welsh software engineer Josh Wardle. Players have six attempts to guess a five-letter word, with feedback given for each guess in the form of colored tiles indicating when letters match or occupy the correct position.
@@ -25,20 +25,19 @@ Before you begin, ensure you have the following installed on your machine:
 
 ### Installation
 
-1. Fork the [repository](https://github.com/lendstack/lendstack-wordle).
-2. Clone your forked repository to your local machine:
+1. Clone your the repository to your local machine:
 
    ```bash
    git clone https://github.com/mmardi01/lendstack-wordle.git
    ```
 
-3. Navigate to the project directory:
+2. Navigate to the project directory:
 
    ```bash
    cd lendstack-wordle
    ```
 
-4. Install dependencies:
+3. Install dependencies:
 
    ```bash
    npm install
