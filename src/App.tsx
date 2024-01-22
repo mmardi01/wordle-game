@@ -82,7 +82,7 @@ function App() {
     <div className="w-screen h-screen flex justify-center bg-[#262B3C] items-center">
       <div className=" flex flex-col items-center gap-10">
         <div className="bg-[#dadce008] w-[420px] h-[55px] rounded-xl flex items-center justify-center">
-          <h1 className="font-bold text-4xl text-white">Lendstack Wordle</h1>
+          <h1 className="font-bold text-4xl text-white">Wordle Game</h1>
         </div>
         <div className="flex flex-col gap-2">
           {/*  previous guesses area */}

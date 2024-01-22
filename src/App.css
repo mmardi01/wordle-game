@@ -30,18 +30,15 @@
 
 @keyframes flip {
   0% {
-    background: #939b9f29;
     border: solid 2px #939b9f29;
     transform: rotateX(0);
   }
   45% {
     transform: rotateX(90deg);
-    backgroun: #939b9f29;
     border: solid 2px #939b9f29;
   }
   55% {
     transform: rotateX(90deg);
-    background: #939b9f29;
     border: solid 2px #939b9f29;
   }
   100% {
